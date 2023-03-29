@@ -20,11 +20,11 @@ con.addEventListener("drop", function (e) {
   e.preventDefault();
   stage.setPointersPositions(e);
   var rect = new Konva.Rect({
-    x: 20,
-    y: 60,
-    width: 150,
-    height: 150,
-    fill: "black",
+    x: stage.getPointerPosition().x,
+    y: stage.getPointerPosition().y,
+    width: 50 + Math.random() * 50,
+    height: 50 + Math.random() * 50,
+    fill: Konva.Util.getRandomColor(),
     // rotation: Math.random() * 360,
     draggable: true,
     name: "object",
