@@ -2,6 +2,7 @@ var width = window.innerWidth;
 var height = 600;
 var GUIDELINE_OFFSET = 5;
 var rects = [];
+var MAX_WIDTH = window.innerWidth;
 
 var stage = new Konva.Stage({
   container: "container",
@@ -32,7 +33,7 @@ con.addEventListener("drop", function (e) {
   layer.add(rect);
 
   var tr = new Konva.Transformer({
-    //   node: rect,
+    node: rect,
     anchorSize: 8,
     rotateEnabled: false,
     boundBoxFunc: function (oldBoundBox, newBoundBox) {
@@ -49,7 +50,7 @@ con.addEventListener("drop", function (e) {
   stage.on("click", function (e) {
     if (e.target === stage) {
       tr.hide();
-      rect.nodes([]);
+      tr.nodes([]);
       layer.draw();
     }
   });
