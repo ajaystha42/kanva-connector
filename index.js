@@ -30,6 +30,35 @@ con.addEventListener("drop", function (e) {
     name: "object",
   });
   layer.add(rect);
+
+  var tr = new Konva.Transformer({
+    //   node: rect,
+    anchorSize: 8,
+    rotateEnabled: false,
+    boundBoxFunc: function (oldBoundBox, newBoundBox) {
+      if (Math.abs(newBoundBox.width) > MAX_WIDTH) {
+        return oldBoundBox;
+      }
+
+      return newBoundBox;
+    },
+  });
+
+  layer.add(tr);
+
+  stage.on("click", function (e) {
+    if (e.target === stage) {
+      tr.hide();
+      rect.nodes([]);
+      layer.draw();
+    }
+  });
+
+  rect.on("click", function () {
+    tr.nodes([rect]);
+    layer.add(tr);
+    tr.show();
+  });
 });
 
 // first generate random rectangles
