@@ -1,5 +1,5 @@
 var width = window.innerWidth;
-var height = window.innerHeight;
+var height = 600;
 var GUIDELINE_OFFSET = 5;
 var rects = [];
 
@@ -11,6 +11,26 @@ var stage = new Konva.Stage({
 
 var layer = new Konva.Layer();
 stage.add(layer);
+var con = document.getElementById("container");
+con.addEventListener("dragover", function (e) {
+  e.preventDefault();
+});
+
+con.addEventListener("drop", function (e) {
+  e.preventDefault();
+  stage.setPointersPositions(e);
+  var rect = new Konva.Rect({
+    x: 20,
+    y: 60,
+    width: 150,
+    height: 150,
+    fill: "black",
+    // rotation: Math.random() * 360,
+    draggable: true,
+    name: "object",
+  });
+  layer.add(rect);
+});
 
 // first generate random rectangles
 // for (var i = 0; i < 5; i++) {

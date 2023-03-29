@@ -2,5 +2,21 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: bisque;        
+    background-color: white;        
+  }
+
+  #container{
+    background-color: bisque;    
+  }
+  #drag-items {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    height: 40px;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+  }
+  #drag-items label {
+    margin-top: 10px;
   }
